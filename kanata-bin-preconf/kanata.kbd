@@ -1,0 +1,11 @@
+;; Caps to escape on tap / control on hold & esc -> caps configuration for Kanata
+
+(defsrc
+  caps
+  esc
+)
+
+(deflayermap base
+  caps (tap-hold 100 100 esc lctl)
+  esc caps
+)

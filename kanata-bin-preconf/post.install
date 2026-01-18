@@ -1,0 +1,7 @@
+post_install() {
+  echo -e "\n\e[1mYou may enable the service to start Kanata on boot by running:\e[0m"
+  echo -e "  \e[32msystemctl daemon-reload\e[0m"
+  echo -e "  \e[32msystemctl enable kanata.service\e[0m"
+  echo -e "\e[1mTo start Kanata now, additionally run:\e[0m"
+  echo -e "  \e[32msystemctl start kanata.service\e[0m"
+}

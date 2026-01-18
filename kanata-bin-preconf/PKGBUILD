@@ -1,0 +1,37 @@
+# adapted from https://github.com/tranquil-tr0/pacstall-programs/blob/master/packages/kanata-bin/kanata-bin.pacscript
+# and adapted from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=kanata-bin
+pkgname="kanata-bin-preconf"
+pkgver="1.10.1"
+pkgrel=1
+pkgdesc="Keyboard remapper, improve keyboard comfort and usability with advanced customization"
+arch=('x86_64')
+url="https://github.com/jtroo/kanata/"
+license=('LGPL-3.0-only')
+depends=('gcc-libs' 'glibc')
+provides=('kanata')
+conflicts=('kanata')
+install='post.install'
+source=(
+  "kanata.kbd"
+  "kanata.service"
+  "https://github.com/jtroo/kanata/releases/download/v${pkgver//_/-}/kanata-linux-binaries-v${pkgver//_/-}-x64.zip"  "https://github.com/jtroo/kanata/raw/v${pkgver//_/-}/LICENSE"
+)
+sha256sums=(
+  '7c65996d5e5848b1fd00765b6d88e7ec9c34609393ece094f04ece1e8b9f41aa'
+  '04a4f27d654da81bd70c73f61f80145696b8f98478bcb8a05273237c4af334e2'
+  'f755a4bdeb26821893ef954732db34eda845dcecd421c6f06a8b4b280ea38a39'
+  'a5681bf9b05db14d86776930017c647ad9e6e56ff6bbcfdf21e5848288dfaf1b'
+)
+backup=('etc/kanata.kbd')
+
+# This section should describe how the package is installed and where things go
+package() {
+  install -Dm755 "${srcdir}/kanata_linux_x64" "${pkgdir}/usr/bin/kanata"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # Create and install systemd service file
+  install -Dm644 kanata.service "${pkgdir}/usr/lib/systemd/system/kanata.service"
+
+  #Create and install config file
+  install -Dm644 kanata.kbd "${pkgdir}/etc/kanata.kbd"
+}

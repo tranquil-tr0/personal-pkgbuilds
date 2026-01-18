@@ -1,0 +1,19 @@
+pkgbase = kanata-bin-preconf
+	pkgdesc = Keyboard remapper, improve keyboard comfort and usability with advanced customization
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/jtroo/kanata/
+	install = kanata-bin-preconf.install
+	arch = x86_64
+	license = LGPL-3.0-only
+	depends = gcc-libs
+	depends = glibc
+	provides = kanata
+	conflicts = kanata
+	backup = etc/kanata.kbd
+	source = https://github.com/jtroo/kanata/releases/download/v1.10.1/linux-binaries-x64-v1.10.1.zip
+	source = https://github.com/jtroo/kanata/raw/v1.10.1/LICENSE
+	sha256sums = f755a4bdeb26821893ef954732db34eda845dcecd421c6f06a8b4b280ea38a39
+	sha256sums = a5681bf9b05db14d86776930017c647ad9e6e56ff6bbcfdf21e5848288dfaf1b
+
+pkgname = kanata-bin-preconf
